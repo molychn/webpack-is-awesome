@@ -30,3 +30,10 @@ loader的写法在webpack的配置中有多种方式：
 - Bundle server提供文件在浏览器的访问，一般对生成一个server站点进行访问
 - HMR Runtime被注入到浏览器，起到更新文件变化的作用
 - bundle.js构建输出的文件
+## 文件指纹
+利用文件指纹确认版本区别
+- Hash：每次项目文件有修改整个项目构建的hash值都会更改
+- Chunkhash：和webpack的打包chunk相关，不同的entry会生成 不同的chunk
+  - 设置output的filename，使用chunkhash
+- Contenthash：根据文件内容来定义hash，文件内容不变则contenthash不变
+  - 设置MiniCssExtractPlugin的filename使用contenthash
