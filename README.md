@@ -21,7 +21,8 @@ loader的写法在webpack的配置中有多种方式：
 ## 监听文件
 - webpack --watch
 - WDS热更新，将监听文件放在内存中而不像watch放置在磁盘中
-### 使用热更新时需要安装webpack-dev-server，此时需要注意是它与webpack/webpack-cli版本的兼容问题
+### 注意事项
+使用热更新时需要安装webpack-dev-server，此时需要注意是它与webpack/webpack-cli版本的兼容问题
 - WDM，将webpack输出的文件传输给服务器，适用于灵活的定制场景
 ### 解析过程：
 - webpack compile将js编译成bundle
