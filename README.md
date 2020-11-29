@@ -18,3 +18,14 @@ loader的写法在webpack的配置中有多种方式：
 - 直接在use字段中引用该loader的名字
 - 将多个loader名称打包成一个数组后由use指向该数组
 - 在数组中，针对某个loader需要进行单独配置时，可将该loader写成一个key-value对象，由字段loader与options进行配置
+## 监听文件
+- webpack --watch
+- WDS热更新，将监听文件放在内存中而不像watch放置在磁盘中
+使用热更新时需要安装webpack-dev-server，此时需要注意是它与webpack/webpack-cli版本的兼容问题
+- WDM，将webpack输出的文件传输给服务器，适用于灵活的定制场景
+解析过程：
+- webpack compile将js编译成bundle
+- HMR server将热更新的文件输出到HMR Runtime
+- Bundle server提供文件在浏览器的访问，一般对生成一个server站点进行访问
+- HMR Runtime被注入到浏览器，起到更新文件变化的作用
+- bundle.js构建输出的文件
