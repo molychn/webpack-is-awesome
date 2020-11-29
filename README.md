@@ -33,7 +33,12 @@ loader的写法在webpack的配置中有多种方式：
 ## 文件指纹
 利用文件指纹确认版本区别
 - Hash：每次项目文件有修改整个项目构建的hash值都会更改
+  - 在file-loader的optioins中修改name值，使用hash
 - Chunkhash：和webpack的打包chunk相关，不同的entry会生成 不同的chunk
   - 设置output的filename，使用chunkhash
 - Contenthash：根据文件内容来定义hash，文件内容不变则contenthash不变
   - 设置MiniCssExtractPlugin的filename使用contenthash
+## 文件压缩
+- js：webpack内置的uglifyjs-webpack-plugin
+- css：由于css-loader更新后不再兼容压缩，可以使用optimize-css-assets-webpack-plugin，同时使用cssnano进行css压缩
+- html：html-webpack-plugin
