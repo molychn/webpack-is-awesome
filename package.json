@@ -1,0 +1,25 @@
+{
+  "name": "webpack-is-awesome",
+  "version": "1.0.0",
+  "description": "webpack理解与实现",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/molychn/webpack-is-awesome.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/molychn/webpack-is-awesome/issues"
+  },
+  "homepage": "https://github.com/molychn/webpack-is-awesome#readme",
+  "devDependencies": {
+    "webpack": "^5.9.0",
+    "webpack-cli": "^4.2.0"
+  }
+}
