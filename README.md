@@ -46,3 +46,5 @@ loader的写法在webpack的配置中有多种方式：
 使用clean-webpack-plugin插件在webpack配置中引用实现打包时清理
 ## 自动添加css前缀
 postcss-loader与autoprefix，同样注意两个插件的版本区别
+## 移动端实现px转rem
+使用px2rem-loader与手淘lib-flexible库实现相应式计算
