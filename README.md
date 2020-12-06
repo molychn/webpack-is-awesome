@@ -48,3 +48,12 @@ loader的写法在webpack的配置中有多种方式：
 postcss-loader与autoprefix，同样注意两个插件的版本区别
 ## 移动端实现px转rem
 使用px2rem-loader与手淘lib-flexible库实现相应式计算
+## 实现资源内联
+- 对于css内联的实现，可用style-loader配置其options实现，或者使用html-inline-css-webpack-plugin。
+- raw-loader在html文件中引入相应的文件：
+```
+// 在头文件中引入meta内容
+${require('raw-loader!./meta.html)}
+// 引入js内容
+${require('raw-loader!babel-loader!./something.js)}
+```
