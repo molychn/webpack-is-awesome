@@ -18,7 +18,6 @@ const setMPA = () => {
 
     const match = entryFile.match(/src\/views\/(.*)\/index\.js/)
     const pageName = match && match[1]
-    console.log('pageName: ', pageName);
 
     entry[pageName] = entryFile
     htmlWebpackPlugins.push(
@@ -57,7 +56,7 @@ module.exports = {
     path: path.join(__dirname, './dist'),
     filename: '[name]_[chunkhash:8].js'
   },
-  mode: 'production',
+  mode: 'none',
   module: {
     rules: [
       {
@@ -129,5 +128,6 @@ module.exports = {
       cssProcessor: require('cssnano')
     }),
     new CleanWebpackPlugin()
-  ].concat(htmlWebpackPlugins)
+  ].concat(htmlWebpackPlugins),
+  devtool: 'source-map'
 }

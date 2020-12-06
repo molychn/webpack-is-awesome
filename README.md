@@ -57,3 +57,5 @@ ${require('raw-loader!./meta.html)}
 // 引入js内容
 ${require('raw-loader!babel-loader!./something.js)}
 ```
+## source map
+对于devtool开发配置选项可进行source map配置
