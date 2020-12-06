@@ -42,3 +42,5 @@ loader的写法在webpack的配置中有多种方式：
 - js：webpack内置的uglifyjs-webpack-plugin
 - css：由于css-loader更新后不再兼容压缩，可以使用optimize-css-assets-webpack-plugin，同时使用cssnano进行css压缩
 - html：html-webpack-plugin
+## 清理旧构建目录
+使用clean-webpack-plugin插件在webpack配置中引用实现打包时清理
