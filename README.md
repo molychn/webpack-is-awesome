@@ -62,3 +62,5 @@ ${require('raw-loader!babel-loader!./something.js)}
 ## 公共代码提取
 1. 使用SplitChunksPlugin进行公共脚本分离，这一部分主要是webpack自带的插件，可以直接设置optimization配置进行提取设置
 2. 另一种就是使用HtmlWebpackExternalsPlugins，在plugins里实例化后会抽取出所配置的依赖库，如React，jQuery等，但是在打包过程中它会在html文件里进行两次注入（后续要了解下才行）
+## tree-shaking（可以重点了解下原理）
+开启mode配置进行tree-shaking操作
