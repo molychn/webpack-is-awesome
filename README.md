@@ -64,3 +64,8 @@ ${require('raw-loader!babel-loader!./something.js)}
 2. 另一种就是使用HtmlWebpackExternalsPlugins，在plugins里实例化后会抽取出所配置的依赖库，如React，jQuery等，但是在打包过程中它会在html文件里进行两次注入（后续要了解下才行）
 ## tree-shaking（可以重点了解下原理）
 开启mode配置进行tree-shaking操作
+## scope hoisting
+将所有模块的代码按照引用顺序放在一个函数作用域里，然后适当地重命名一些变量防止变量名冲突  
+在webpack4中当配置参数mode为production时默认开启scope hoisting  
+也就是要进行作用域提升时，最好的书写方式是尽量将要引用到的库放置在最前面  
+相关插件：ModuleConcatenationPlugin

@@ -2,6 +2,7 @@
 
 const path = require('path')
 const glob = require('glob')
+const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -57,7 +58,7 @@ module.exports = {
     path: path.join(__dirname, './dist'),
     filename: '[name]_[chunkhash:8].js'
   },
-  mode: 'production',
+  mode: 'none',
   module: {
     rules: [
       {
@@ -143,6 +144,7 @@ module.exports = {
     //     }
     //   ]
     // })
+    new webpack.optimize.ModuleConcatenationPlugin()
   ].concat(htmlWebpackPlugins),
   optimization: {
     splitChunks: {
