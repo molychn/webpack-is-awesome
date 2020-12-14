@@ -69,3 +69,5 @@ ${require('raw-loader!babel-loader!./something.js)}
 在webpack4中当配置参数mode为production时默认开启scope hoisting  
 也就是要进行作用域提升时，最好的书写方式是尽量将要引用到的库放置在最前面  
 相关插件：ModuleConcatenationPlugin
+## 代码分割与动态加载
+使用require.ensure；使用新特性与babel配合使用实现动态加载（@babel/plugin-syntax-dynamic-import）
