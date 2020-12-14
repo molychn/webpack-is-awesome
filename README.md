@@ -71,3 +71,4 @@ ${require('raw-loader!babel-loader!./something.js)}
 相关插件：ModuleConcatenationPlugin
 ## 代码分割与动态加载
 使用require.ensure；使用新特性与babel配合使用实现动态加载（@babel/plugin-syntax-dynamic-import）
+## 在webpack中集成eslint规范团队代码开发
