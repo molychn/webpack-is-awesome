@@ -72,3 +72,8 @@ ${require('raw-loader!babel-loader!./something.js)}
 ## 代码分割与动态加载
 使用require.ensure；使用新特性与babel配合使用实现动态加载（@babel/plugin-syntax-dynamic-import）
 ## 在webpack中集成eslint规范团队代码开发
+## webpack ssr打包
+使用webpack打包后利用服务器进行渲染的方式，需配置好webpack适配服务器端，同时在服务器端渲染时要注意的是，服务器端是没有浏览器的window对象的。  
+首先是写法问题，要在服务器端渲染，则引入的库与文件需使用require的写法引入，  
+之后的webpack配置中，先对eslint-loader进行屏蔽，输出格式也设置为**libraryTarget: 'umd'**的格式，  
+还有一点的是，对于图片的打包，由于file-loader打包后本身默认的EsModule模块与服务器端渲染是有区别的，所以需要对file-loader也做一个相应的修改，即esModule: false
