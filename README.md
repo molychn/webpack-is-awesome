@@ -76,4 +76,5 @@ ${require('raw-loader!babel-loader!./something.js)}
 使用webpack打包后利用服务器进行渲染的方式，需配置好webpack适配服务器端，同时在服务器端渲染时要注意的是，服务器端是没有浏览器的window对象的。  
 首先是写法问题，要在服务器端渲染，则引入的库与文件需使用require的写法引入，  
 之后的webpack配置中，先对eslint-loader进行屏蔽，输出格式也设置为**libraryTarget: 'umd'**的格式，  
-还有一点的是，对于图片的打包，由于file-loader打包后本身默认的EsModule模块与服务器端渲染是有区别的，所以需要对file-loader也做一个相应的修改，即esModule: false
+还有一点的是，对于图片的打包，由于file-loader打包后本身默认的EsModule模块与服务器端渲染是有区别的，所以需要对file-loader也做一个相应的修改，即esModule: false  
+除了图片的打包配置，样式的加载也会受其影响，因此可以使用客户端打包的html文件作模版，实现样式的渲染，主要实现方式就是采用占位符，然后用String.replace方法来进行替换。相同，在服务端请求数据时也可以使用占位符将请求到的数据挂载到window对象上。
