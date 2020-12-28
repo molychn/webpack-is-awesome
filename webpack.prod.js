@@ -8,6 +8,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const HtmlWebpackExternalsPlugins = require('html-webpack-externals-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const setMPA = () => {
   const entry = {}
@@ -58,14 +59,14 @@ module.exports = {
     path: path.join(__dirname, './dist'),
     filename: '[name]_[chunkhash:8].js'
   },
-  mode: 'none',
+  mode: 'production',
   module: {
     rules: [
       {
         test: /.js$/,
         use: [
-          'babel-loader',
-          'eslint-loader'
+          'babel-loader'
+          // 'eslint-loader'
         ]
       },
       {
@@ -147,7 +148,8 @@ module.exports = {
     //     }
     //   ]
     // })
-    new webpack.optimize.ModuleConcatenationPlugin()
+    // new webpack.optimize.ModuleConcatenationPlugin(),
+    new FriendlyErrorsWebpackPlugin()
   ].concat(htmlWebpackPlugins),
   optimization: {
     splitChunks: {
@@ -160,5 +162,6 @@ module.exports = {
       }
     }
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
+  stats: 'errors-only'
 }

@@ -78,3 +78,6 @@ ${require('raw-loader!babel-loader!./something.js)}
 之后的webpack配置中，先对eslint-loader进行屏蔽，输出格式也设置为**libraryTarget: 'umd'**的格式，  
 还有一点的是，对于图片的打包，由于file-loader打包后本身默认的EsModule模块与服务器端渲染是有区别的，所以需要对file-loader也做一个相应的修改，即esModule: false  
 除了图片的打包配置，样式的加载也会受其影响，因此可以使用客户端打包的html文件作模版，实现样式的渲染，主要实现方式就是采用占位符，然后用String.replace方法来进行替换。相同，在服务端请求数据时也可以使用占位符将请求到的数据挂载到window对象上。
+## 优化终端构建日志
+- 可以使用插件friendly-errors-webpack-plugin
+- 设置stats参数实现终端日志产出

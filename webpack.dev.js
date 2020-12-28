@@ -2,11 +2,12 @@
 
 const path = require('path')
 const webpack = require('webpack')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 module.exports = {
   entry: {
-    index: './src/index.js',
-    search: './src/search.js'
+    index: './src/index/index.js',
+    search: './src/search/index.js'
   },
   output: {
     path: path.join(__dirname, './dist'),
@@ -56,7 +57,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new FriendlyErrorsWebpackPlugin()
   ],
   devServer: {
     contentBase: './dist',
