@@ -83,3 +83,25 @@ ${require('raw-loader!babel-loader!./something.js)}
 - 设置stats参数实现终端日志产出
 ## compiler hooks钩子捕获操作
 compiler.hooks.done.tap('done', (stats) => {})
+## 构建包设计
+- 通过配置多个文件管理不同环境的webpack配置文件
+- 抽离成一个npm包进行统一管理
+### 功能设计
+- 基础配置
+  - 负责开发与生产的资源解析，即两环境下共有的module模块配置
+  - 样式增强，对css进行前缀补齐（postcss-loader）以及单位上的转换（px2rem-loader，这点看项目实际需要操作）
+  - 目录清理，每次使用webpack运行环境时，无论是开发还是生产发布，都可以对目录缓存进行清理
+  - 多页面打包
+  - 终端日志优化以及错误的捕获与处理
+  - css提取成一个单独文件
+- 开发阶段配置
+  - 代码热更新
+  - sourcemap
+- 生产阶段配置
+  - 代码压缩
+  - 文件指纹
+  - tree shaking
+  - 速度与体积优化
+- SSR配置
+  - output设置
+  - 样式解析忽略css-ignore

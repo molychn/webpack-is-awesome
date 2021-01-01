@@ -1,13 +1,8 @@
-'use strict'
-
 const path = require('path')
 const glob = require('glob')
-const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
-const HtmlWebpackExternalsPlugins = require('html-webpack-externals-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const setMPA = () => {
@@ -50,23 +45,13 @@ const setMPA = () => {
 const {entry, htmlWebpackPlugins} = setMPA()
 
 module.exports = {
-  // entry: {
-  //   index: './src/index.js',
-  //   search: './src/search.js'
-  // },
   entry,
-  output: {
-    path: path.join(__dirname, './dist'),
-    filename: '[name]_[chunkhash:8].js'
-  },
-  mode: 'production',
   module: {
     rules: [
       {
         test: /.js$/,
         use: [
           'babel-loader'
-          // 'eslint-loader'
         ]
       },
       {
@@ -129,26 +114,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name]_[contenthash:8].css'
     }),
-    new OptimizeCssAssetsPlugin({
-      assetNameRegExp: /\.css$/g,
-      cssProcessor: require('cssnano')
-    }),
     new CleanWebpackPlugin(),
-    // new HtmlWebpackExternalsPlugins({
-    //   externals: [
-    //     {
-    //       module: 'react',
-    //       entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js',
-    //       global: 'React'
-    //     },
-    //     {
-    //       module: 'react-dom',
-    //       entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
-    //       global: 'ReactDOM'
-    //     }
-    //   ]
-    // })
-    // new webpack.optimize.ModuleConcatenationPlugin(),
     new FriendlyErrorsWebpackPlugin(),
     (compiler) => {
       compiler.hooks.done.tap('done', (stats) => {
@@ -162,17 +128,5 @@ module.exports = {
       })
     }
   ].concat(htmlWebpackPlugins),
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /(react|react-dom)/,
-          name: 'vendors',
-          chunks: 'all'
-        }
-      }
-    }
-  },
-  devtool: 'source-map',
   stats: 'errors-only' // 终端日志显示配置
 }
