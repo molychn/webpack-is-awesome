@@ -81,3 +81,5 @@ ${require('raw-loader!babel-loader!./something.js)}
 ## 优化终端构建日志
 - 可以使用插件friendly-errors-webpack-plugin
 - 设置stats参数实现终端日志产出
+## compiler hooks钩子捕获操作
+compiler.hooks.done.tap('done', (stats) => {})
