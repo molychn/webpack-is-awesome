@@ -109,3 +109,16 @@ compiler.hooks.done.tap('done', (stats) => {})
 ## 测试设计功能结果
 可以使用mocha+chai编写测试用例，使用istanbul进行测试用例覆盖
 - 冒烟测试，对整个工程的构建打包结果进行验证，判断是否能都执行成功，以及打包后相应的文件是否正常，如html文件，css以及js文件等。
+## git commit规范与changelog生成
+- 安装husky，validate-commit-msg进行commit信息规范
+  - 规范遵循angular
+- 安装convertional-changelog-cli生成changelog.md文档
+## 项目版本号管理
+- semver规范
+  - 主版本号：实现不兼容的API修改
+  - 次版本号：做向下兼容的功能，新增功能
+  - 修订号：对当前版本进行问题修正
+  - 先行版本号
+    - .alpha，内部测试版，不向外发布，主要用于测试，可能会有很多bug
+    - .beta，在alpha版本后发布，一般是修复完alpha上的错误。在这个阶段还会加入新的功能
+    - .rc，发行候选版本，不再增加功能，主要着重于除错
