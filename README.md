@@ -106,3 +106,6 @@ compiler.hooks.done.tap('done', (stats) => {})
 - SSR配置
   - output设置
   - 样式解析忽略css-ignore
+## 测试设计功能结果
+可以使用mocha+chai编写测试用例，使用istanbul进行测试用例覆盖
+- 冒烟测试，对整个工程的构建打包结果进行验证，判断是否能都执行成功，以及打包后相应的文件是否正常，如html文件，css以及js文件等。
