@@ -86,6 +86,7 @@ compiler.hooks.done.tap('done', (stats) => {})
 ## 构建包设计
 - 通过配置多个文件管理不同环境的webpack配置文件
 - 抽离成一个npm包进行统一管理
+- 使用eslint规范包代码
 ### 功能设计
 - 基础配置
   - 负责开发与生产的资源解析，即两环境下共有的module模块配置
