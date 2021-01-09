@@ -122,3 +122,26 @@ compiler.hooks.done.tap('done', (stats) => {})
     - .alpha，内部测试版，不向外发布，主要用于测试，可能会有很多bug
     - .beta，在alpha版本后发布，一般是修复完alpha上的错误。在这个阶段还会加入新的功能
     - .rc，发行候选版本，不再增加功能，主要着重于除错
+## 分析webpack构建
+- 使用stats进行分析，缺点在于颗粒度太粗
+- speed-measure-webpack-plugin
+- webpack-bundle-analyzer 分析打包后的体积
+- HappyPack 多进程多实例分配给worker线程池
+- thread-loader，与上述的HappyPack类似
+- parallel-uglify-plugin或uglifyjs-webpack-plugin开启parallel参数进行多线程并行压缩
+- 设置Externals进行分包
+  - html-webpack-externals-plugin
+  - 使用DLLPlugin进行分包：DLLReferencePlugin对manifest.json引用
+- 开启缓存提升二次构建速度
+  - babel-loader开启缓存
+  - terser-webpack-plugin开启缓存
+  - 使用cache-loader或hard-source-webpack-plugin
+- 减少构建目标
+  - 优化resolve.modules配置，减少模块搜索层级
+  - 优化resolve.mainFields配置
+  - 优化resolve.extensions配置
+  - 合理使用alias
+- tree-shaking擦除无用js与css
+  - purgecss-webpack-plugin和mini-css-extract-plugin配合使用
+- 图片压缩，image-webpack-loader
+- 动态Polyfill Service

@@ -9,6 +9,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const HtmlWebpackExternalsPlugins = require('html-webpack-externals-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin')
+
+const smp = new SpeedMeasureWebpackPlugin()
 
 const setMPA = () => {
   const entry = {}
@@ -49,7 +52,7 @@ const setMPA = () => {
 
 const {entry, htmlWebpackPlugins} = setMPA()
 
-module.exports = {
+module.exports = smp.wrap({
   // entry: {
   //   index: './src/index.js',
   //   search: './src/search.js'
@@ -175,4 +178,4 @@ module.exports = {
   },
   devtool: 'source-map',
   stats: 'errors-only' // 终端日志显示配置
-}
+})
