@@ -144,4 +144,4 @@ compiler.hooks.done.tap('done', (stats) => {})
 - tree-shaking擦除无用js与css
   - purgecss-webpack-plugin和mini-css-extract-plugin配合使用
 - 图片压缩，image-webpack-loader
-- 动态Polyfill Service
+- 动态Polyfill Service 
